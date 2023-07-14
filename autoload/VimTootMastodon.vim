@@ -12,9 +12,9 @@ class VimTootMastodon:
 
     def __init__( self ):
         print( "VimTootMastodon init" )
-        self.clientSecret = vim.vars["clientSecret"].decode( encoding='utf-8') 
-        self.accessToken  = vim.vars["accessToken"].decode( encoding='utf-8') 
-        self.baseUrl      = vim.vars["baseUrl"].decode( encoding='utf-8') 
+        self.clientSecret = vim.vars["MastodonClientSecret"].decode( encoding='utf-8') 
+        self.accessToken  = vim.vars["MastodonAccessToken"].decode( encoding='utf-8') 
+        self.baseUrl      = vim.vars["MastodonBaseUrl"].decode( encoding='utf-8') 
 
         self.mastodon = Mastodon(
         client_secret   = self.clientSecret,
@@ -41,7 +41,10 @@ class VimTootMastodon:
             vim.command( "bw" )
 
         elif re.fullmatch( r'^[0-9]+$' , arg ):
-            x = self.mastodon.status_post( status=text , in_reply_to_id=arg , media_ids=None, sensitive=False, visibility=None , spoiler_text=None, language=None, idempotency_key=None, content_type=None, scheduled_at=None, poll=None, quote_id=None)
+            #投稿先の公開状態を取得する。
+            reply = mastodon.status( arg )
+
+            x = self.mastodon.status_post( status=text , in_reply_to_id=arg , media_ids=None, sensitive=False, visibility=reply.visibility , spoiler_text=None, language=None, idempotency_key=None, content_type=None, scheduled_at=None, poll=None, quote_id=None)
             vim.command( 'let @i = "' + str( x.id ) + '"' )
             vim.command( "bw" )
 

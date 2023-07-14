@@ -42,7 +42,7 @@ class VimTootMastodon:
 
         elif re.fullmatch( r'^[0-9]+$' , arg ):
             #投稿先の公開状態を取得する。
-            reply = mastodon.status( arg )
+            reply = self.mastodon.status( arg )
 
             x = self.mastodon.status_post( status=text , in_reply_to_id=arg , media_ids=None, sensitive=False, visibility=reply.visibility , spoiler_text=None, language=None, idempotency_key=None, content_type=None, scheduled_at=None, poll=None, quote_id=None)
             vim.command( 'let @i = "' + str( x.id ) + '"' )

@@ -28,19 +28,19 @@ let g:MastodonBaseUrl      = ""
 ## Usage
 下記のコマンドをサポートします。<br>
 
-- Mastodon
+- Mastodon<br>
     投稿用のウィンドウを作成する。<br>
 
-- MastodonPost [ ReplyID / public / unlisted / private ]
+- MastodonPost [ ReplyID / public / unlisted / private ]<br>
     投稿用のウィンドウで実行した場合、そのバッファの内容を送信して閉じる。<br>
     投稿後、vimのiレジスタに投降したIDが挿入されます。<br>
     任意でオプションを一つ設定できます。<br>
 
-    - public/unlisted/private
+    - public/unlisted/private<br>
         設定した場合、指定した公開設定が適用されます。<br>
         指定しなかった場合、サーバー側でのデフォルトが使用される。<br>
 
-    - ReplyID
+    - ReplyID<br>
         指定した場合、指定した投稿へのリプライとして送信されます。<br>
 
 

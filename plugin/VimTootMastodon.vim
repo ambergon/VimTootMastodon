@@ -12,15 +12,15 @@ if !has("python3")
     finish
 endif
 
-if !exists('g:MastodonClientSecret')
-    finish
-endif
-if !exists('g:MastodonAccessToken')
-    finish
-endif
-if !exists('g:MastodonBaseUrl')
-    finish
-endif
+"if !exists('g:MastodonClientSecret')
+"    finish
+"endif
+"if !exists('g:MastodonAccessToken')
+"    finish
+"endif
+"if !exists('g:MastodonBaseUrl')
+"    finish
+"endif
 
 
 
@@ -28,8 +28,6 @@ endif
 command! -nargs=0                                   Mastodon      call VimTootMastodon#NewMastodon(<f-args>)
 command! -nargs=? -complete=customlist,CompSave     MastodonPost  call VimTootMastodon#PostMastodon(<f-args>)
 
-function! VimTootMastodon#()
-endfunction
 
 function! CompSave(lead, line, pos )
     let l:matches = []

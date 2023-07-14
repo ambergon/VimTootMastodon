@@ -1,0 +1,105 @@
+*VimTootMastodon.txt*	日本語ヘルプ
+
+Version :
+Author  :
+License : MIT license  {{{
+    Permission is hereby granted, free of charge, to any person obtaining
+    a copy of this software and associated documentation files (the
+    "Software"), to deal in the Software without restriction, including
+    without limitation the rights to use, copy, modify, merge, publish,
+    distribute, sublicense, and/or sell copies of the Software, and to
+    permit persons to whom the Software is furnished to do so, subject to
+    the following conditions:
+    The above copyright notice and this permission notice shall be included
+    in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+}}}
+
+==============================================================================
+目次						*VimTootMastodon-contents*
+
+概要				|VimTootMastodon-introduction|
+使い方				|VimTootMastodon-usage|
+インターフェイス		|VimTootMastodon-interface|
+  コマンド			  |VimTootMastodon-commands|
+  関数				  |VimTootMastodon-functions|
+TODO				|VimTootMastodon-todo|
+更新履歴			|VimTootMastodon-changelog|
+
+
+==============================================================================
+概要						*VimTootMastodon-introduction*
+
+*VimTootMastodon* は
+Vimからマストドンサーバーに投稿を送信するシンプルなプラグインです。
+投稿の読み込み機能はありません。
+
+最新版:
+https://github.com/user/VimTootMastodon.vim
+
+
+==============================================================================
+使い方						*VimTootMastodon-usage*
+マストドンの設定/開発からAPIKeyを発行し、下記の変数を設定してください。
+必要なパーミッションは、write:statuses/投稿の送信とread:statuses/すべての投稿の読み取りです。<br>
+投稿の読み取りは、リプライ元の投稿IDを使用するために使用されます。
+
+let g:MastodonClientSecret = ""
+let g:MastodonAccessToken  = ""
+let g:MastodonBaseUrl      = ""
+
+
+またpythonのライブラリが必要です。
+pip install Mastodon.py
+
+
+
+==============================================================================
+インターフェイス				*VimTootMastodon-interface*
+
+------------------------------------------------------------------------------
+コマンド					*VimTootMastodon-commands*
+
+:Mastodon					*:Mastodon*
+専用のバッファを作ります。
+
+
+:MastodonPost [{}]				*:MastodonPost*
+そのバッファの内容を投稿します。
+引数がなければ、デフォルトの公開範囲で投稿されます。
+引数には、public unlisted private リプライ先の投稿ID
+のどれか一つのみを取ります。
+
+リプライの場合、公開範囲はリプライ元と同じになります。
+
+
+------------------------------------------------------------------------------
+関数						*VimTootMastodon-functions*
+
+CompSave({lead}, {line}, {pos} )		*CompSave()*
+
+
+VimTootMastodon#NewMastodon()		*VimTootMastodon#NewMastodon()*
+
+
+VimTootMastodon#PostMastodon( {...} )	*VimTootMastodon#PostMastodon()*
+
+
+==============================================================================
+TODO						*VimTootMastodon-todo*
+
+
+
+==============================================================================
+更新履歴					*VimTootMastodon-changelog*
+
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:noet:fen:

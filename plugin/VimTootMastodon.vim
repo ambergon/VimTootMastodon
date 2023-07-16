@@ -25,11 +25,11 @@ endif
 
 
 
-command! -nargs=0                                   Mastodon      call VimTootMastodon#NewMastodon(<f-args>)
-command! -nargs=? -complete=customlist,CompSave     MastodonPost  call VimTootMastodon#PostMastodon(<f-args>)
+command! -nargs=0                                              Mastodon      call VimTootMastodon#NewMastodon(<f-args>)
+command! -nargs=? -complete=customlist,VimTootMastodonComp     MastodonPost  call VimTootMastodon#PostMastodon(<f-args>)
 
 
-function! CompSave(lead, line, pos )
+function! VimTootMastodonComp(lead, line, pos )
     let l:matches = []
     for arg in [ "public" , "unlisted" , "private" ]
         if arg =~? '^' . strpart(a:lead,0)

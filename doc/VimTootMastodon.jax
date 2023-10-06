@@ -80,6 +80,15 @@ pip install Mastodon.py
 リプライの場合、公開範囲はリプライ元と同じになります。
 
 
+:MastodonSearch {} ...				*:MastodonSearch*
+引数をとってそのワードを検索します。
+半角スペースで区切ることでAND検索になります。
+
+
+:MastodonSearchMe {} ...			*:MastodonSearchMe*
+自分の投稿のみを検索します。
+
+
 ------------------------------------------------------------------------------
 関数						*VimTootMastodon-functions*
 
@@ -90,6 +99,10 @@ VimTootMastodon#NewMastodon()		*VimTootMastodon#NewMastodon()*
 
 
 VimTootMastodon#PostMastodon( {...} )	*VimTootMastodon#PostMastodon()*
+
+
+					*VimTootMastodon#SearchMastodon()*
+VimTootMastodon#SearchMastodon( {...} )
 
 
 ==============================================================================

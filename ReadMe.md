@@ -44,6 +44,14 @@ let g:MastodonBaseUrl      = ""
         指定した場合、指定した投稿へのリプライとして送信されます。<br>
         公開設定はリプライ先と同じもとになる。
 
+- MastodonSearch <word word...><br>
+    マストドンを検索します。<br>
+    半角スペースを使用することでAND検索になります。
+
+- MastodonSearchMe <word word...><br>
+    自分の投稿のみを検索します。
+
+
 
 ## License
 MIT

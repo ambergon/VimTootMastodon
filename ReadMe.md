@@ -42,6 +42,7 @@ let g:MastodonBaseUrl      = ""
 
     - ReplyID<br>
         指定した場合、指定した投稿へのリプライとして送信されます。<br>
+        公開設定はリプライ先と同じもとになる。
 
 
 ## License
@@ -50,11 +51,6 @@ MIT
 
 ## 注意事項
 すべて自己責任でご使用ください。
-
-
-## 他
-このプラグインは送信専用ですが、デスクトップマスコットなどを使用することで、ブラウザ等へのウィンドウの切り替えをせずに閲覧、投稿IDの取得などをすることができます。<br>
-[GitHub - ambergon/chromeExtension_ukagakaClockWorkUkadonForSSP](https://github.com/ambergon/chromeExtension_ukagakaClockWorkUkadonForSSP)<br>
 
 
 ## Author

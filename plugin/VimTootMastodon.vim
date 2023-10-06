@@ -3,10 +3,10 @@
 " Author: ambergon
 " License: MIT
 
-if exists('g:loaded_VimTootMastodon')
-  finish
-endif
-let g:loaded_VimTootMastodon = 1
+"if exists('g:loaded_VimTootMastodon')
+"  finish
+"endif
+"let g:loaded_VimTootMastodon = 1
 
 if !has("python3")
     finish
@@ -36,8 +36,10 @@ function! VimTootMastodon#Comp(lead, line, pos )
     return l:matches
 endfunction
 
-command! -nargs=0                                              Mastodon      call VimTootMastodon#NewMastodon(<f-args>)
-command! -nargs=? -complete=customlist,VimTootMastodon#Comp    MastodonPost  call VimTootMastodon#PostMastodon(<f-args>)
+command! -nargs=0                                              Mastodon         call VimTootMastodon#NewMastodon(<f-args>)
+command! -nargs=? -complete=customlist,VimTootMastodon#Comp    MastodonPost     call VimTootMastodon#PostMastodon(<f-args>)
+command! -nargs=+                                              MastodonSearch   call VimTootMastodon#SearchMastodon(<q-args>)
+command! -nargs=+                                              MastodonSearchMe call VimTootMastodon#SearchMastodon( <q-args> , "Me" )
 
 
 

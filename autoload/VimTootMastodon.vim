@@ -52,6 +52,40 @@ class VimTootMastodon:
             print( "no match" )
 
 
+    #mastodon.pyの公式説明によると、offset/min_id/max_idでページネーションせよとのことだが、
+    #min_id/max_idはaccount_idの帯域指定であって一度に検索する量ではないように見える・・・
+    #offsetは望みの通り動作する。
+    def SearchMastodon( self , SearchWord , Me = False ):
+        del vim.current.buffer[:]
+        if Me == False :
+            a = self.mastodon.search( SearchWord , result_type="statuses" )
+        else :
+            SearchID = self.mastodon.me()
+            a = self.mastodon.search( SearchWord , account_id = SearchID.id ,result_type="statuses")
+
+        num = 0
+        text = ""
+        vim.current.buffer.append( "ヒット件数 : " + str( len( a["statuses"] ) ) )
+        for statuse in a["statuses"] :
+            num = num + 1
+
+            vim.current.buffer.append( str( num ) + " . " + str( statuse.created_at ) + " / TootID  : " + str( statuse.id ) )
+            vim.current.buffer.append( str( statuse.uri ) )
+            #改行処理は向いていない。
+            text = re.sub( "<br />" , "\n" , statuse.content )
+            text = re.sub( "<.*?>" , "" , text )
+            texts = text.split( "\n" )
+            for line in texts :
+                vim.current.buffer.append( line )
+
+            vim.current.buffer.append( "" )
+
+        del vim.current.buffer[0]
+        return ""
+
+
+
+
 VimTootMastodonInst   = VimTootMastodon()
 EOF
 
@@ -69,6 +103,9 @@ function! VimTootMastodon#NewMastodon()
         setl bufhidden=delete
     endif
 endfunction
+
+
+
 
 
 
@@ -96,6 +133,40 @@ function! VimTootMastodon#PostMastodon( ... )
         endif
     endif
 endfunction
+
+
+
+function! VimTootMastodon#SearchMastodon( ... )
+    let num = bufnr( "VimMastodon:search" )
+    "指定した名前のバッファが存在しない。
+    if num == -1 
+        vs VimMastodon:search
+        setl buftype=nowrite
+        setl encoding=utf-8
+        setl bufhidden=delete
+    else
+        let window = win_findbuf( num )
+        "ウィンドウが開いていない
+        if empty( window )
+            vs VimMastodon:search
+            setl buftype=nowrite
+            setl encoding=utf-8
+            setl bufhidden=delete
+        else
+            "開いているならウィンドウへ移動
+            call win_gotoid( window[0] )
+        endif
+    endif
+
+    if len( a:000 ) == 1
+        let l:x = py3eval( 'VimTootMastodonInst.SearchMastodon("' . a:1 . '")' )
+    else
+        let l:x = py3eval( 'VimTootMastodonInst.SearchMastodon("' . a:1 . '" , "True")' )
+    endif
+
+endfunction
+
+
 
 
 

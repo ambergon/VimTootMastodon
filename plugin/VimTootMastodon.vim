@@ -39,7 +39,7 @@ endfunction
 command! -nargs=0                                              Mastodon         call VimTootMastodon#NewMastodon(<f-args>)
 command! -nargs=? -complete=customlist,VimTootMastodon#Comp    MastodonPost     call VimTootMastodon#PostMastodon(<f-args>)
 command! -nargs=+                                              MastodonSearch   call VimTootMastodon#SearchMastodon(<q-args>)
-command! -nargs=+                                              MastodonSearchMe call VimTootMastodon#SearchMastodon( <q-args> , "Me" )
+command! -nargs=+                                              MastodonSearchMe call VimTootMastodon#SearchMastodonMe( <q-args> )
 
 " 2以上である必要がある。
 command! -nargs=+                                              MastodonSearchOther call VimTootMastodon#SearchMastodonOther( <q-args> )

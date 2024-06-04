@@ -41,10 +41,8 @@ command! -nargs=? -complete=customlist,VimTootMastodon#Comp    MastodonPost     
 command! -nargs=+                                              MastodonSearch   call VimTootMastodon#SearchMastodon(<q-args>)
 command! -nargs=+                                              MastodonSearchMe call VimTootMastodon#SearchMastodon( <q-args> , "Me" )
 
-
-
-
-
+" 2以上である必要がある。
+command! -nargs=+                                              MastodonSearchOther call VimTootMastodon#SearchMastodonOther( <q-args> )
 
 
 

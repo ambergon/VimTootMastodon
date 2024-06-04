@@ -13,8 +13,12 @@ pip install Mastodon.py
 
 ## 必要な設定
 Mastodonの設定->開発からAPIKeyの発行が必要です。<br>
-必要なパーミッションは、write:statuses/投稿の送信とread/アカウントのすべてのデータの読み取りです。<br>
-読み取りはリプライ先の公開状態を取得し、同じ公開状態で送信および自分のアカウントIDを取得後、自分の投稿を検索するのに使用します。<br>
+必要なパーミッションは、下記です。<br>
+
+- read 
+- read:statuses 
+- write:statuses
+- read:search
 
 パーミッションを変更するたびにアクセストークンが変わることに注意してください。<br>
 下記の三つを設定してください。<br>
@@ -51,6 +55,9 @@ let g:MastodonBaseUrl      = ""
 - MastodonSearchMe [word word...]<br>
     自分の投稿のみを検索します。
 
+- MastodonSearchMe [user名 word word...]<br>
+    指定したuserの投稿を検索します。
+    例: @ユーザー名@fedibird.com word1 word2
 
 
 ## License

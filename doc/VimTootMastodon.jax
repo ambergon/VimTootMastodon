@@ -88,11 +88,18 @@ pip install Mastodon.py
 :MastodonSearchMe {} ...			*:MastodonSearchMe*
 自分の投稿のみを検索します。
 
+:MastodonSearchOther {} ...			*:MastodonSearchOther*
+引数を複数取ります。
+第一引数を検索するユーザ名とし、以降続く引数をAND検索します。
 
 ------------------------------------------------------------------------------
 関数						*VimTootMastodon-functions*
 
-CompSave({lead}, {line}, {pos} )		*CompSave()*
+						*VimTootMastodon#Comp()*
+VimTootMastodon#Comp({lead}, {line}, {pos} )
+
+
+VimTootMastodon#MakeSearchWindow()	*VimTootMastodon#MakeSearchWindow()*
 
 
 VimTootMastodon#NewMastodon()		*VimTootMastodon#NewMastodon()*
@@ -103,6 +110,16 @@ VimTootMastodon#PostMastodon( {...} )	*VimTootMastodon#PostMastodon()*
 
 					*VimTootMastodon#SearchMastodon()*
 VimTootMastodon#SearchMastodon( {...} )
+
+
+					*VimTootMastodon#SearchMastodonMe()*
+VimTootMastodon#SearchMastodonMe( {...} )
+
+
+				*VimTootMastodon#SearchMastodonOther()*
+VimTootMastodon#SearchMastodonOther( {...} )
+
+
 
 
 ==============================================================================
